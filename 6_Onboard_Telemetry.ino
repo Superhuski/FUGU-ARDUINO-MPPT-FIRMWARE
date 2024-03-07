@@ -37,11 +37,11 @@ void Onboard_Telemetry(){
       Serial.print(" "); 
       Serial.print(" VI:");    Serial.print(voltageInput,3); 
       Serial.print(" CI:");    Serial.print(currentInput,3); 
-      Serial.Print(" PI:");    Serial.print(powerInput,3); 
+      Serial.print(" PI:");    Serial.print(powerInput,3); 
       Serial.print(" "); 
       Serial.print(" VO:");    Serial.print(voltageOutput,3); 
       Serial.print(" CO:");    Serial.print(currentOutput,3); 
-      Serial.Print(" PO:");    Serial.print(powerOutput,3); 
+      Serial.print(" PO:");    Serial.print(powerOutput,3); 
       Serial.print(" "); 
       Serial.print(" Wh:");    Serial.print(Wh,2); 
       Serial.print(" Temp:");  Serial.print(temperature,1);  
