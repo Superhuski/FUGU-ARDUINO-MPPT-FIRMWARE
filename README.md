@@ -1,4 +1,4 @@
-# FUGU-ARDUINO-MPPT-FIRMWARE
+# FUGU-ARDUINO-MPPT-FIRMWARE Testing Branche
 An open source Arduino ESP32 MPPT Solar Charge Controller firmware equipped with charging algorithms, WiFi, LCD menus &amp; more!
 
 This is a clone from https://github.com/AngeloCasi/FUGU-ARDUINO-MPPT-FIRMWARE.git
@@ -23,6 +23,7 @@ Assuming you have already built the FUGU MPPT Solar Charge Controller using Ange
 
 ## Changelog:
 
+* adding information to debugg the MPPT Algorithm
 * set ADS1115 as default parameter (ADS1115 is actually cheaper now and easier to buy than ADS1015) NOTE: Change the values if you are using ADS1015
 * added support for latest blynk (you need to create your own widgets in blynk console)
 * added reconnect function for wifi and blynk when device gets offline
