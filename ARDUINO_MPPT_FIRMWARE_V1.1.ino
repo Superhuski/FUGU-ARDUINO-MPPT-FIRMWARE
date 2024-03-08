@@ -78,7 +78,6 @@ firmwareContactR2 = "TechBuilder     ";
 #include <SPI.h>                    //SYSTEM PARAMETER  - SPI Library (By: Arduino)
 #include <WiFi.h>                   //SYSTEM PARAMETER  - WiFi Library (By: Arduino)
 #include <WiFiClient.h>             //SYSTEM PARAMETER  - WiFi Library (By: Arduino)
-#include <BlynkSimpleEsp32.h>       //SYSTEM PARAMETER  - Blynk WiFi Library For Phone App 
 #include <LiquidCrystal_I2C.h>      //SYSTEM PARAMETER  - ESP32 LCD Compatible Library (By: Robojax)
 #include <Adafruit_ADS1X15.h>       //SYSTEM PARAMETER  - ADS1115/ADS1015 ADC Library (By: Adafruit)
 #include <WiFiManager.h>            //SYSTEM PARAMETER  - Wifi Manager for configuring wifi credentials on initial startup or after a factory reset
@@ -104,8 +103,11 @@ Adafruit_ADS1115 ads;             //SYSTEM PARAMETER  - ADS1115 ADC Library (By:
 #define buttonBack      19          //SYSTEM PARAMETER - 
 #define buttonSelect    23          //SYSTEM PARAMETER -
 #define BLYNK_TEMPLATE_ID "your_blynk_template_id"
-#define BLYNK_DEVICE_NAME "your_blynk_device_name"
+#define BLYNK_TEMPLATE_NAME "your_blynk_device_name"
 #define BLYNK_AUTH_TOKEN "your_blynk_auth_token"
+
+#include <BlynkSimpleEsp32.h>       //SYSTEM PARAMETER  - Blynk WiFi Library For Phone App 
+
 #define BLYNK_PRINT Serial
 BlynkTimer timer;
 
@@ -115,7 +117,7 @@ BlynkTimer timer;
 // from email after registering from the Blynk platform.                                            //
 //==================================================================================================//
 char 
-auth[] = "InputBlynkAuthenticationToken";   //   USER PARAMETER - Input Blynk Authentication Token (From email after registration)
+auth[] = BLYNK_AUTH_TOKEN;   //   USER PARAMETER - Input Blynk Authentication Token (From email after registration)
 
 //====================================== USER PARAMETERS ==========================================//
 // The parameters below are the default parameters used when the MPPT charger settings have not    //
