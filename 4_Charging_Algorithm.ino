@@ -54,14 +54,14 @@ void Charging_Algorithm(){
         /////////////////////// MPPT & CC-CV CHARGING ALGORITHM ///////////////////////  
       else{                                                                                                                                                         
         if(currentOutput>currentCharging){PWM--; MPPT = "CC Mode";}                                      //Current Is Above → Decrease Duty Cycle → hold Current for CC charging
-        else if(voltageOutput>voltageBatteryMax){PWM--; MPPT = "CV Mode"}                               //Voltage Is Above → Decrease Duty Cycle → hold Voltage for CV charging   
+        else if(voltageOutput>voltageBatteryMax){PWM--; MPPT = "CV Mode";}                               //Voltage Is Above → Decrease Duty Cycle → hold Voltage for CV charging   
         else{                                                                          //MPPT ALGORITHM
           if(powerInput>powerInputPrev && voltageInput>voltageInputPrev)     {PWM--; MPPT = "PU/VU";}  //  ↑P ↑V ; →MPP  //D--
           else if(powerInput>powerInputPrev && voltageInput<voltageInputPrev){PWM++; MPPT = "PU/VD";}  //  ↑P ↓V ; MPP←  //D++
           else if(powerInput<powerInputPrev && voltageInput>voltageInputPrev){PWM++; MPPT = "PD/VU";}  //  ↓P ↑V ; MPP→  //D++
           else if(powerInput<powerInputPrev && voltageInput<voltageInputPrev){PWM--; MPPT = "PD/VD";}  //  ↓P ↓V ; ←MPP  //D--
           else if(voltageOutput<voltageBatteryMax)                           {PWM++; MPPT = "VO<BV";}  //  MP MV ; MPP Reached 
-          else {MPPT = "nothing"}
+          else {MPPT = "nothing";}
           powerInputPrev   = powerInput;                                               //Store Previous Recorded Power
           voltageInputPrev = voltageInput;                                             //Store Previous Recorded Voltage        
         }   

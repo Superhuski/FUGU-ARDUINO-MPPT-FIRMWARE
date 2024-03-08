@@ -287,7 +287,7 @@ timeOn                = 0,           //SYSTEM PARAMETER -
 loopTimeStart         = 0,           //SYSTEM PARAMETER - Used for the loop cycle stop watch, records the loop start time
 loopTimeEnd           = 0,           //SYSTEM PARAMETER - Used for the loop cycle stop watch, records the loop end time
 secondsElapsed        = 0;           //SYSTEM PARAMETER - 
-String MPPT               = "none";      //SYSTEM PARAMETER - for Debuging MPPT Algorithm on low Power Cells 
+String MPPT           = "none";      //SYSTEM PARAMETER - for Debuging MPPT Algorithm on low Power Cells 
 
 //====================================== MAIN PROGRAM =============================================//
 // The codes below contain all the system processes for the MPPT firmware. Most of them are called //
