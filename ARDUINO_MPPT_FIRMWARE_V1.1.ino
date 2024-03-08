@@ -1,10 +1,10 @@
 /*  PROJECT FUGU FIRMWARE V1.10  (DIY 1kW Open Source MPPT Solar Charge Controller)
  *  By: TechBuilder (Angelo Casimiro)
  *  FIRMWARE STATUS: Verified Stable Build Version
- *  (Contact me for the experimental beta versions)
+ *  Edited By: Superhuski
  *  -----------------------------------------------------------------------------------------------------------
  *  DATE CREATED:  02/07/2021 
- *  DATE MODIFIED: 30/08/2021
+ *  DATE MODIFIED: 08/03/2024
  *  -----------------------------------------------------------------------------------------------------------
  *  CONTACTS:
  *  GitHub - www.github.com/AngeloCasi (New firmware releases will only be available on GitHub Link)
@@ -32,15 +32,15 @@
  *  4.) Do not modify code unless you know what you are doing
  *  5.) The MPPT's synchronous buck converter topology is code dependent, messing with the algorithm
  *      and safety protection protocols can be extremely dangerous especially when dealing with HVDC.
- *  6.) Install Blynk Legacy to access the phone app telemetry feature
+ *  6.) Install Blynk to access the phone app telemetry feature
  *  7.) Input the Blynk authentication in this program token sent by Blynk to your email after registration
- *  8.) Input WiFi SSID and password in this program
+ *  8.) Input WiFi SSID and password in Setup
  *  9.) When using WiFi only mode, change "disableFlashAutoLoad = 0" to = 1 (LCD and buttons not installed)
  *      this prevents the MPPT unit to load the Flash Memory saved settings and will load the Arduino variable
  *      declarations set below instead
  *  -----------------------------------------------------------------------------------------------------------
- *  GOOGLE DRIVE PROJECT LINK: coming soon
- *  INSTRUCTABLE TUTORIAL LINK: coming soon
+ *  GOOGLE DRIVE PROJECT LINK: drive.google.com/drive/folders/1Sd2jWAb-F8NAXlJ6PLdhcnPDQV0alD15
+ *  INSTRUCTABLE TUTORIAL LINK: www.instructables.com/DIY-1kW-MPPT-Solar-Charge-Controller/
  *  YOUTUBE TUTORIAL LINK: www.youtube.com/watch?v=ShXNJM6uHLM
  *  GITHUB UPDATED FUGU FIRMWARE LINK: github.com/AngeloCasi/FUGU-ARDUINO-MPPT-FIRMWARE
  *  -----------------------------------------------------------------------------------------------------------
@@ -64,10 +64,10 @@
 // The lines below are for the Firmware Version info displayed on the MPPT's LCD Menu Interface     //
 //==================================================================================================//
 String 
-firmwareInfo      = "V1.10   ",
-firmwareDate      = "30/08/21",
-firmwareContactR1 = "www.youtube.com/",  
-firmwareContactR2 = "TechBuilder     ";        
+firmwareInfo      = "V1.11   ",
+firmwareDate      = "08/03/24",
+firmwareContactR1 = "Superhuski",  
+firmwareContactR2 = "";        
            
 //====================== ARDUINO LIBRARIES (ESP32 Compatible Libraries) ============================//
 // You will have to download and install the following libraries below in order to program the MPPT //
@@ -78,7 +78,6 @@ firmwareContactR2 = "TechBuilder     ";
 #include <SPI.h>                    //SYSTEM PARAMETER  - SPI Library (By: Arduino)
 #include <WiFi.h>                   //SYSTEM PARAMETER  - WiFi Library (By: Arduino)
 #include <WiFiClient.h>             //SYSTEM PARAMETER  - WiFi Library (By: Arduino)
-#include <BlynkSimpleEsp32.h>       //SYSTEM PARAMETER  - Blynk WiFi Library For Phone App 
 #include <LiquidCrystal_I2C.h>      //SYSTEM PARAMETER  - ESP32 LCD Compatible Library (By: Robojax)
 #include <Adafruit_ADS1X15.h>       //SYSTEM PARAMETER  - ADS1115/ADS1015 ADC Library (By: Adafruit)
 #include <WiFiManager.h>            //SYSTEM PARAMETER  - Wifi Manager for configuring wifi credentials on initial startup or after a factory reset
@@ -104,8 +103,11 @@ Adafruit_ADS1115 ads;             //SYSTEM PARAMETER  - ADS1115 ADC Library (By:
 #define buttonBack      19          //SYSTEM PARAMETER - 
 #define buttonSelect    23          //SYSTEM PARAMETER -
 #define BLYNK_TEMPLATE_ID "your_blynk_template_id"
-#define BLYNK_DEVICE_NAME "your_blynk_device_name"
+#define BLYNK_TEMPLATE_NAME "your_blynk_device_name"
 #define BLYNK_AUTH_TOKEN "your_blynk_auth_token"
+
+#include <BlynkSimpleEsp32.h>       //SYSTEM PARAMETER  - Blynk WiFi Library For Phone App 
+
 #define BLYNK_PRINT Serial
 BlynkTimer timer;
 
@@ -115,7 +117,7 @@ BlynkTimer timer;
 // from email after registering from the Blynk platform.                                            //
 //==================================================================================================//
 char 
-auth[] = "InputBlynkAuthenticationToken";   //   USER PARAMETER - Input Blynk Authentication Token (From email after registration)
+auth[] = BLYNK_AUTH_TOKEN;   //SYSTEM PARAMETER - Blynk Authentication Token
 
 //====================================== USER PARAMETERS ==========================================//
 // The parameters below are the default parameters used when the MPPT charger settings have not    //

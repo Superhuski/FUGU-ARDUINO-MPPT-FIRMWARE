@@ -11,7 +11,7 @@ Required libraries:
 * [Adafruit_ADS1X15](https://github.com/adafruit/Adafruit_ADS1X15)
 * [WiFiManager](https://github.com/tzapu/WiFiManager)
 
-## [Release](https://github.com/cyberangel22k/FUGU-ARDUINO-MPPT-FIRMWARE/releases)
+## [Release](https://github.com/Superhuski/FUGU-ARDUINO-MPPT-FIRMWARE/releases)
 
 ## Usage
 Assuming you have already built the FUGU MPPT Solar Charge Controller using AngeloCasi's guide, here are the steps flashing this firmware version:
@@ -23,6 +23,7 @@ Assuming you have already built the FUGU MPPT Solar Charge Controller using Ange
 
 ## Changelog:
 
+* updatetd blynk suport to function without problems
 * set ADS1115 as default parameter (ADS1115 is actually cheaper now and easier to buy than ADS1015) NOTE: Change the values if you are using ADS1015
 * added support for latest blynk (you need to create your own widgets in blynk console)
 * added reconnect function for wifi and blynk when device gets offline
